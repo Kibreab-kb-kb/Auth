@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { loginRequest } from './actions';
 
-const ShopOwnerForm = () => {
+const ShopOwnerForm = ({ isLoading, error, loginRequest }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    loginRequest();
+    console.log("Login Request Dispatched");
 
     // Logic to create the ShopOwner account
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-[#007C7C]">
-      <form onSubmit={handleSubmit} className="  shadow-lg shadow-black/70 rounded px-12 pt-8 pb-8 mb-12 ">
-        <div className="mb-4">
+    <div className="flex justify-center items-center ">
+      <form onSubmit={handleSubmit} className="p-8  bg-darkblue border  rounded-lg overflow-hidden hover:border-blue-500 transition-all duration-300 ">
+        {/* Form fields */}
+        <div className="mb-8">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
             Name
           </label>
-          
           <input
-            className="bg-[#00008B] shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight 
+            focus:outline-none focus:shadow-outline bg-gradient-to-r from-teal to-darkblue placeholder-white"
             id="name"
             type="text"
+            placeholder="Enter your name"
             value={name}
-            placeholder='Enter your name'
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -33,10 +38,11 @@ const ShopOwnerForm = () => {
             Email
           </label>
           <input
-            className="bg-[#00008B] shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-white-700 leading-tight 
+            focus:outline-none focus:shadow-outline bg-gradient-to-r from-teal to-darkblue placeholder-white "
             id="email"
             type="email"
-            placeholder='email'
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -46,18 +52,20 @@ const ShopOwnerForm = () => {
             Password
           </label>
           <input
-            className="bg-[#00008B] shadow appearance-none border rounded-xl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline 
+            bg-gradient-to-r from-teal to-darkblue placeholder-white"
             id="password"
             type="password"
-            placeholder='Enter your password'
+            placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
+        {/* Submit button */}
         <div className="flex items-center justify-center">
           <button
-            className=" bg-[#071330] border-2 border-white hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-tl-3xl rounded-br-3xl focus:outline-none focus:shadow-outline
-            bg-gradient-to-r from-darkblue to-teal text-white hover:from-darkblue-dark hover:to-teal-dark"
+            className="bg-[#071330] border-2 border-white hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-tl-3xl rounded-br-3xl focus:outline-none focus:shadow-outline bg-gradient-to-r from-darkblue to-teal text-white hover:from-darkblue-dark hover:to-teal-dark"
             type="submit"
           >
             Create Account
@@ -68,4 +76,13 @@ const ShopOwnerForm = () => {
   );
 };
 
-export default ShopOwnerForm;
+const mapStateToProps = (state) => ({
+  isLoading: state.isLoading,
+  error: state.error,
+});
+
+const mapDispatchToProps = {
+  loginRequest,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShopOwnerForm);

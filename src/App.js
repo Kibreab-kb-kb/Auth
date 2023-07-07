@@ -1,13 +1,28 @@
-import React from 'react';
+import { Provider } from 'react-redux';
+import store from './store';
 import ShopOwnerForm from './ShopOwnerForm';
+import gameBackground from './game.jpg'; // Import the image file
 
 function App() {
   return (
-    <div className="App bg-teal absolute top-0 left-0 w-full h-full flex flex-col items-center">
-      <h1 className="text-center text-white text-3xl font-bold mt-8  " >ShopOwner Account Creation</h1>
-      <ShopOwnerForm />
-    </div>
+    <Provider store={store}>
+      <div
+        className="App h-screen"
+        style={{
+          backgroundImage: `url(${gameBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="relative z-10 flex flex-col items-center">
+          <h1 className="text-center mt-12 bg-clip-text text-transparent 
+          bg-gradient-to-r from-blue-200 to-red-300 text-2xl ">ShopOwner Account Creation </h1>
+          <ShopOwnerForm />
+        </div>
+      </div>
+    </Provider>
   );
 }
 
 export default App;
+
