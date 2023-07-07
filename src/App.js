@@ -1,23 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ShopOwnerForm from './ShopOwnerForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-teal absolute top-0 left-0 w-full h-full flex flex-col items-center">
+      <h1 className="text-center text-white text-3xl font-bold mt-8  " >ShopOwner Account Creation</h1>
+      <ShopOwnerForm />
     </div>
   );
 }
