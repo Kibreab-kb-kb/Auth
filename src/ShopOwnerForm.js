@@ -12,12 +12,14 @@ const ShopOwnerForm = ({ isLoading, error, loginRequest }) => {
     loginRequest();
     console.log("Login Request Dispatched");
 
-    // Logic to create the ShopOwner account
+   
   };
 
   return (
     <div className="flex justify-center items-center ">
-      <form onSubmit={handleSubmit} className="p-8  bg-darkblue border  rounded-lg overflow-hidden hover:border-blue-500 transition-all duration-300 ">
+      <form onSubmit={handleSubmit} className="p-8  bg-darkblue border  
+         rounded-lg overflow-hidden hover:border-blue-500 transition-all duration-300 ">
+
         {/* Form fields */}
         <div className="mb-8">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
@@ -61,6 +63,7 @@ const ShopOwnerForm = ({ isLoading, error, loginRequest }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        
 
         {/* Submit button */}
         <div className="flex items-center justify-center">
