@@ -1,16 +1,16 @@
 import { Provider } from 'react-redux';
 import store from './store';
 import ShopOwnerForm from './ShopOwnerForm';
-import gameBackground from './game.jpg'; // Import the image file
+import gameBackground from './game.jpg';
 
 function App() {
   return (
     <Provider store={store}>
       <div
-        className="App h-screen"
+        className="App h-screen "
         style={{
           backgroundImage: `url(${gameBackground})`,
-          backgroundSize: 'cover',
+          
           backgroundPosition: 'center',
         }}
       >
