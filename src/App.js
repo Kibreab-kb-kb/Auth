@@ -1,4 +1,4 @@
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';//importing redux
 import store from './store';
 import ShopOwnerForm from './ShopOwnerForm';
 import gameBackground from './game.jpg';
